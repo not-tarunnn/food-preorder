@@ -157,3 +157,7 @@ html { scroll-behavior: smooth; }
 .foot-grid a:not(.logo):hover { color: var(--ink); }
 .foot-note { margin-top: 12px !important; max-width: 30ch; }
 .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 24px; padding-bottom: 28px; margin-top: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+.modal .primary { display: block; text-decoration: none; text-align: center; margin-top: 14px; }
+.modal .pay-note { color: var(--ink); }
+.linkbtn { background: none; border: 0; color: var(--muted); margin-top: 10px; cursor: pointer; text-decoration: underline; }

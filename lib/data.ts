@@ -43,3 +43,17 @@ export function getDates(count = 7) {
   }
   return out;
 }
+
+// Placeholder payee: replace with the real mess UPI ID
+export const UPI = { vpa: "yourmess@upi", name: "Hall Mess" };
+
+export function buildUpiLink(amount: number, orderId: string) {
+  const q = new URLSearchParams({
+    pa: UPI.vpa,
+    pn: UPI.name,
+    am: amount.toFixed(2),
+    cu: "INR",
+    tn: `Mess preorder ${orderId}`,
+  });
+  return `upi://pay?${q.toString()}`;
+}

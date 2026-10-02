@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { HALLS, ITEMS, MEALS, getDates, type Meal } from "../lib/data";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { HALLS, ITEMS, MEALS, getDates, buildUpiLink, type Meal } from "../lib/data";
 
 type Order = {
   id: string;
@@ -20,6 +20,12 @@ export default function Preorder() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [busy, setBusy] = useState(false);
   const [placed, setPlaced] = useState<Order | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const closeModal = () => {
+    if (timer.current) clearTimeout(timer.current);
+    setPlaced(null);
+  };
 
   useEffect(() => setDates(getDates()), []);
 
@@ -53,6 +59,9 @@ export default function Preorder() {
       };
       setOrders((o) => [order, ...o]);
       setPlaced(order);
+      timer.current = setTimeout(() => {
+        window.location.href = buildUpiLink(order.total, order.id);
+      }, 2500);
       setCart({});
       setBusy(false);
     }, 900);
@@ -62,7 +71,7 @@ export default function Preorder() {
     <section id="order" className="container section">
       <div className="sec-head">
         <h2>Preorder specials</h2>
-        <p>Pick your hall and day, then reserve what you want. Pay at the counter.</p>
+        <p>Pick your hall and day, then reserve what you want. Pay with UPI after placing your order.</p>
       </div>
 
       <section className="pickers">
@@ -175,15 +184,21 @@ export default function Preorder() {
       )}
 
       {placed && (
-        <div className="overlay" onClick={() => setPlaced(null)}>
+        <div className="overlay" onClick={() => closeModal()}>
           <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
             <div className="tick">✓</div>
             <h2>Preorder placed</h2>
             <p>
-              Order <strong>#{placed.id}</strong> is reserved at {placed.hall} for {placed.dateLabel}. Show this
-              number at the mess counter.
+              Order <strong>#{placed.id}</strong> is reserved at {placed.hall} for {placed.dateLabel}.
             </p>
-            <button className="primary" onClick={() => setPlaced(null)}>Done</button>
+            <p className="pay-note">
+              Please complete your payment of <strong>₹{placed.total}</strong>. Opening your UPI app…
+            </p>
+            <a className="primary" href={buildUpiLink(placed.total, placed.id)}>
+              Pay ₹{placed.total} with UPI
+            </a>
+            <button className="linkbtn" onClick={closeModal}>Done</button>
+            <p className="hint">UPI apps open on phones. On a computer, pay from your phone.</p>
           </div>
         </div>
       )}

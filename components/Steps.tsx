@@ -1,13 +1,13 @@
 const steps = [
   { t: "Pick hall and date", d: "Choose your hall and any of the next 7 days from the dropdowns." },
   { t: "Add your specials", d: "Browse by meal, add what you like, and adjust quantities." },
-  { t: "Collect at the counter", d: "Show your order number at the mess and pay when you pick up." },
+  { t: "Pay with UPI, then collect", d: "Pay in your UPI app, then show your order number at the counter." },
 ];
 
 const perks = [
   { e: "⏱️", t: "No waiting in line", d: "Your food is counted before service starts." },
   { e: "🍛", t: "Never miss a special", d: "Reserve popular items before they sell out." },
-  { e: "🧾", t: "Pay at the counter", d: "No online payment needed. Just reserve." },
+  { e: "🧾", t: "Quick UPI payment", d: "Your UPI app opens with the amount filled in." },
 ];
 
 export default function Steps() {
