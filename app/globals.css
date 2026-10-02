@@ -84,3 +84,76 @@ button:focus-visible, select:focus-visible { outline: 2px solid var(--brand); ou
 .tick { width: 52px; height: 52px; border-radius: 50%; background: var(--veg); color: #fff; display: grid; place-items: center; font-size: 26px; margin: 0 auto 12px; }
 @keyframes pop { from { transform: scale(0.94); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .modal { animation: none; } }
+
+/* ---------- site shell ---------- */
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 84px; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.section { padding-top: 64px; padding-bottom: 24px; }
+.sec-head { margin-bottom: 24px; }
+.sec-head h2 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em; margin: 0 0 4px; }
+.sec-head p { margin: 0; color: var(--muted); }
+.container.section.wrap { padding-top: 64px; }
+
+.btn { display: inline-block; text-decoration: none; padding: 12px 22px; border-radius: 12px; font-weight: 600; }
+.primary-btn { background: var(--brand); color: var(--brand-ink); }
+.primary-btn:hover { filter: brightness(1.08); }
+.ghost { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+
+.site-header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; text-decoration: none; color: var(--ink); }
+.mark { width: 30px; height: 30px; border-radius: 9px; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 800; }
+.nav { display: flex; align-items: center; gap: 24px; }
+.nav a:not(.btn) { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav a:not(.btn):hover { color: var(--ink); }
+.nav-cta { padding: 9px 18px; }
+.burger { display: none; background: none; border: 1px solid var(--line); border-radius: 10px; width: 40px; height: 40px; cursor: pointer; }
+@media (max-width: 760px) {
+  .burger { display: block; }
+  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); padding: 12px 20px 20px; }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 12px 0; }
+  .nav-cta { text-align: center; margin-top: 8px; }
+}
+
+.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 24px; }
+@media (max-width: 880px) { .hero { grid-template-columns: 1fr; padding-top: 40px; } }
+.hero h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 18px; }
+.hero p { font-size: 18px; color: var(--muted); max-width: 52ch; margin: 0 0 28px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.ticket { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 24px 60px -30px rgb(40 40 120 / 0.35); transform: rotate(1.5deg); }
+.ticket-top { display: flex; justify-content: space-between; font-weight: 700; padding-bottom: 14px; border-bottom: 2px dashed var(--line); }
+.ticket ul { list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 10px; }
+.ticket li { display: flex; justify-content: space-between; }
+.ticket-total { display: flex; justify-content: space-between; border-top: 2px dashed var(--line); padding-top: 14px; font-size: 18px; }
+.stamp { position: absolute; right: 18px; bottom: -14px; background: var(--veg); color: #fff; font-weight: 700; padding: 6px 14px; border-radius: 8px; transform: rotate(-6deg); }
+
+.steps { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
+.steps h3, .perk h3 { margin: 12px 0 4px; font-size: 18px; }
+.steps p, .perk p { margin: 0; color: var(--muted); font-size: 15px; }
+.num { width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 700; }
+.perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.perk { display: flex; gap: 14px; padding: 18px; border-radius: var(--r); background: color-mix(in srgb, var(--brand) 7%, var(--surface)); }
+.perk > span { font-size: 28px; }
+.perk h3 { margin-top: 0; }
+
+.halls { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+.hall { text-align: center; padding: 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); font-weight: 600; }
+.hall:hover { border-color: var(--brand); color: var(--brand); }
+
+.faq { display: grid; gap: 10px; max-width: 760px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 20px; }
+.faq summary { cursor: pointer; font-weight: 600; }
+.faq details p { margin: 10px 0 0; color: var(--muted); }
+
+.footer { margin-top: 80px; border-top: 1px solid var(--line); background: var(--surface); padding-top: 48px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+.foot-grid h4 { margin: 0 0 10px; font-size: 15px; }
+.foot-grid a:not(.logo), .foot-grid p { display: block; color: var(--muted); text-decoration: none; margin: 0 0 8px; font-size: 14px; }
+.foot-grid a:not(.logo):hover { color: var(--ink); }
+.foot-note { margin-top: 12px !important; max-width: 30ch; }
+.foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 24px; padding-bottom: 28px; margin-top: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }

@@ -11,7 +11,7 @@ type Order = {
   total: number;
 };
 
-export default function Page() {
+export default function Preorder() {
   const [dates, setDates] = useState<{ value: string; label: string }[]>([]);
   const [hall, setHall] = useState("");
   const [date, setDate] = useState("");
@@ -59,11 +59,11 @@ export default function Page() {
   };
 
   return (
-    <main className="wrap">
-      <header className="top">
-        <h1>Mess special preorder</h1>
+    <section id="order" className="container section">
+      <div className="sec-head">
+        <h2>Preorder specials</h2>
         <p>Pick your hall and day, then reserve what you want. Pay at the counter.</p>
-      </header>
+      </div>
 
       <section className="pickers">
         <label>
@@ -187,6 +187,6 @@ export default function Page() {
           </div>
         </div>
       )}
-    </main>
+    </section>
   );
 }
